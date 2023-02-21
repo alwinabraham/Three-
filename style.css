@@ -42,5 +42,5 @@ nav ul{
   font-size: 3rem;
   left: 50%;
   top: 75%;
-  transform: ;
+  transform: translate(-50%, -75%);
 }
