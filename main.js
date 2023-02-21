@@ -9,6 +9,7 @@ const scene = new THREE.Scene();
 const geometry = new THREE.SphereGeometry(3,64,64);
 const material = new THREE.MeshStandardMaterial({
   color:"#cc0cbf",
+  roughness: 0.6,
 })
 const mesh = new THREE.Mesh(geometry, material);
 scene.add(mesh)
@@ -22,6 +23,7 @@ const sizes ={
 //Light
 const light = new THREE.PointLight(0xffffff,1,100)
 light.position.set(0,10,10)
+light.intensity = 1.25
 scene.add(light)
 
 //Camera
@@ -85,7 +87,12 @@ window.addEventListener("mousedown",(e)=>{
       150,
     ]
     //Lets animate
-  }
+    let newColor = new THREE.Color(`rgb(${rgb.join(",")})`)
+    gsap.to(mesh.material.color,{
+      r:newColor.r,
+      g:newColor.g,
+      b:newColor.b}
+      )}
 })
 
 
