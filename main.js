@@ -6,7 +6,8 @@ import "./style.css"
 const scene = new THREE.Scene();
 
 //Create our sphere
-const geometry = new THREE.SphereGeometry(3,64,64);
+const geometry = new THREE.SphereGeometry(2,64,64);
+// const geometry = new THREE.BoxGeometry( 3, 3, 3 );
 const material = new THREE.MeshStandardMaterial({
   color:"#cc0cbf",
   roughness: 0.6,
@@ -30,6 +31,10 @@ scene.add(light)
 const camera = new THREE.PerspectiveCamera(45, sizes.width/sizes.height,0.1,100)
 camera.position.z = 20
 scene.add(camera)
+
+
+const spacetexture = new THREE.TextureLoader().load('photo-1617309215127-ebeb4eddeba5.jpeg');
+scene.background = spacetexture
 
 
 //Renderer    
