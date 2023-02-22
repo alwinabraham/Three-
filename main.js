@@ -8,9 +8,12 @@ const scene = new THREE.Scene();
 //Create our sphere
 const geometry = new THREE.SphereGeometry(2,64,64);
 // const geometry = new THREE.BoxGeometry( 3, 3, 3 );
+const earthTexture = new THREE.TextureLoader().load('earthmab.jpg')
+
 const material = new THREE.MeshStandardMaterial({
-  color:"#cc0cbf",
-  roughness: 0.6,
+  map: earthTexture,
+  color:"lightblue",
+  // roughness: 0.6,
 })
 const mesh = new THREE.Mesh(geometry, material);
 scene.add(mesh)
@@ -22,10 +25,13 @@ const sizes ={
 }
 
 //Light
+const ambientLight = new THREE.AmbientLight(0xffffff)
+ambientLight.intensity = 0.5
+
 const light = new THREE.PointLight(0xffffff,1,100)
 light.position.set(0,10,10)
 light.intensity = 1.25
-scene.add(light)
+scene.add(light, ambientLight)
 
 //Camera
 const camera = new THREE.PerspectiveCamera(45, sizes.width/sizes.height,0.1,100)
